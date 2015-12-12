@@ -1,0 +1,61 @@
+[MAP]
+{
+	Description=made for LD34 by Bluestone;
+	TidalStrength=12.5;
+	Gravity=115;
+	MaxMetal=4.56;
+	ExtractorRadius=90;
+	MapHardness=215;
+	AutoShowMetal=1;
+	specularTex=speculartex.bmp;	
+	
+	[SMF]{
+	maxheight=1200;
+	minheight=0;
+	}
+
+	[ATMOSPHERE]
+	{
+		FogColor=0 0 0;
+		FogStart=0.99;
+		CloudColor=0.43 0.03 0.08;
+		SkyColor=1 0.5 0;
+		SunColor=1 1 0.85;
+		CloudDensity=0.18;
+		MinWind=5;
+		MaxWind=15;
+		Skybox = nebulus.dds;
+	}
+
+	[WATER]
+	{
+		WaterSurfaceColor=0.8 0.8 1;
+		WaterPlaneColor=0 0.11 0.21;
+		WaterBaseColor=0.9 0.95 1;
+		WaterAbsorb=0 0 0;
+		WaterMinColor=0 0 0;
+	}
+
+	[LIGHT]
+	{
+		SunDir=1.2 0.75 0.55;
+		GroundAmbiantColor=0.5 0 0;
+		GroundSunColor=0.97 0.9 0.85;
+		GroundShadowDensity=1;
+		UnitAmbiantColor=0.02 0 0;
+		UnitSunColor=1 0.70 0.25;
+		UnitShadowDensity=1;
+		SpecularSunColor=1 0.70 0.25;
+	}
+	[TEAM0]
+	{
+		StartPosX = 500;		
+		StartPosZ = 500;
+	}
+	[TEAM1]
+	{
+		StartPosX = 1000;		
+		StartPosZ = 1000;
+	}
+
+}
