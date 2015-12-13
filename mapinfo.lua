@@ -116,9 +116,9 @@ local mapinfo = {
 		minWind      = 5.0,
 		maxWind      = 25.0,
 
-		fogStart     = 0.8,
+		fogStart     = 0.79,
 		fogEnd       = 1.0,
-		fogColor     = {0.3, 0.22, 0.1},
+		fogColor     = {0.25, 0.4, 0.3},
 
 		sunColor     = {1.0, 1.0, 1.0},
 		skyColor     = {0.1, 0.15, 0.7},
