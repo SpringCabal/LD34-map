@@ -161,7 +161,6 @@ gadget:ViewResize()
 --------------------------------------------------------------------------------
 
 local vertSrc = [[
-
   void main(void)
   {
     gl_TexCoord[0] = gl_MultiTexCoord0;
@@ -169,10 +168,10 @@ local vertSrc = [[
   }
 ]]
 
-local fragSrc = ([[
-  const float fogAtten  = %f;
-  const float fogHeight = %f;
-  const vec3 fogColor   = vec3(%f, %f, %f);
+local fragSrc = [[
+  const float fogAtten  = 0.007;
+  const float fogHeight = 10000.0;
+  const vec3 fogColor   = vec3(0.25, 0.4, 0.3);
 
   uniform sampler2D tex0;
   uniform vec3 eyePos;
@@ -183,37 +182,25 @@ local fragSrc = ([[
     float z = texture2D(tex0, gl_TexCoord[0].st).x;
 
     vec4 ppos;
-    ppos.xyz = vec3(gl_TexCoord[0].st, z) * 2. - 1.;
-    ppos.a   = 1.;
+    ppos.xyz = vec3(gl_TexCoord[0].st, z) * 2.0 - 1.0;
+    ppos.a   = 1.0;
 
     vec4 worldPos4 = viewProjectionInv * ppos;
 
     vec3 worldPos  = worldPos4.xyz / worldPos4.w;
     vec3 toPoint   = worldPos - eyePos;
 
-#ifdef DEBUG_GFX // world position debugging
-    const float k  = 100.0;
-    vec3 debugColor =worldPos4.xyz;
-    gl_FragColor = vec4(fract(worldPos.x/50),fract(worldPos.y/50),fract(worldPos.z/50), 1.0);
-    return; // BAIL
-#endif
-    float bleh=min(3000, 1350 + 0.4 * (max(0,abs(worldPos.x-5120)-3072) + max(0,abs(worldPos.z-5120)-3072)) );
+    float bleh = min(3000.0, 1350.0 + 0.4 * (max(0.0, abs(worldPos.x - 5120.0) - 3072.0) + max(0.0, abs(worldPos.z - 5120.0) - 3072.0)));
     float h0 = clamp(worldPos.y, 0.0, bleh);
-    float h1 = clamp(eyePos.y,   0.0, bleh); // FIXME: uniform ...
+    float h1 = clamp(eyePos.y,   0.0, bleh);
 
     float len = length(toPoint);
-    float dist = len * abs((h1 - h0) / toPoint.y); // div-by-zero prob?
+    float dist = len * abs((h1 - h0) / max(0.001, abs(toPoint.y)));
     float atten = clamp(1.0 - exp(-dist * fogAtten), 0.0, 1.0);
 
     gl_FragColor = vec4(fogColor, atten);
   }
-]]):format(fogAtten, fogHeight, fogColor[1], fogColor[2], fogColor[3])
-
-
-
-if (debugGfx) then
-  fragSrc = '#define DEBUG_GFX\n' .. fragSrc
-end
+]]
 
 
 --------------------------------------------------------------------------------

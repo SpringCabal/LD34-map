@@ -9,8 +9,7 @@ local mapinfo = {
 	description = "",
 	author      = "Silent wings, smoth",
 	version     = "0.3",
-	--mutator   = "deployment";
-	--mapfile   = "", --// location of smf/sm3 file (optional)
+	mapfile     = "maps/The_Grove_2.smf",
 	modtype     = 3, --// 1=primary, 0=hidden, 3=map
 	depend      = {"Map Helper v1"},
 	replace     = {},
@@ -144,13 +143,13 @@ local mapinfo = {
 		sunDir        = {0.5, 1.0, 0.5, 1e9},
 
 		--// unit & ground lighting
-		groundAmbientColor  = {0.2, 0.1, 0.3},
-		groundDiffuseColor  = {0.65, 0.75, 0.5},
-		groundSpecularColor = {0.1, 0.1, 0.1},
+		groundAmbientColor  = {0.32, 0.32, 0.32},
+		groundDiffuseColor  = {0.68, 0.68, 0.68},
+		groundSpecularColor = {0.15, 0.15, 0.15},
 		groundShadowDensity = 0.4,
-		unitAmbientColor    = {0.4, 0.4, 0.0},
-		unitDiffuseColor    = {0.7, 0.7, 0.7},
-		unitSpecularColor   = {0.7, 0.7, 0.7},
+		unitAmbientColor    = {0.35, 0.35, 0.35},
+		unitDiffuseColor    = {0.70, 0.70, 0.70},
+		unitSpecularColor   = {0.30, 0.30, 0.30},
 		unitShadowDensity   = 0.4,
 		
 		specularExponent    = 100.0,
